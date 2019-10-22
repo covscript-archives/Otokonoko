@@ -1,0 +1,12 @@
+﻿#
+# PROJECT:   Otokonoko no Sekai
+# FILE:      .gitignore
+# PURPOSE:   Git ignore list
+#
+# LICENSE:   See LICENSE in the top level directory
+#
+# DEVELOPER: Mouri_Naruto (Mouri_Naruto AT Outlook.com)
+#
+
+/.vs
+/Output
