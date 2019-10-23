@@ -57,52 +57,52 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(SolutionDir)Dependencies\UefiPkg\UefiPkg.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <OutDir>$(SolutionDir)Output\$(Configuration)\$(Platform)\</OutDir>
-	<IntDir>$(OutDir)Build\$(MSBuildProjectName)\</IntDir>
-	<TargetExt>.efi</TargetExt>
+    <IntDir>$(OutDir)Build\$(MSBuildProjectName)\</IntDir>
+    <TargetExt>.efi</TargetExt>
     <GenerateManifest>
     </GenerateManifest>
-	<LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Uefi;$(SolutionDir)Uefi\Platform_$(Platform);$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
-	  <WarningLevel>Level4</WarningLevel>
-	  <TreatWarningAsError>false</TreatWarningAsError>
-	  <ConformanceMode>true</ConformanceMode>
-	  <LanguageStandard>stdcpp17</LanguageStandard>
-	  <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
-	  <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-	  <ExceptionHandling>false</ExceptionHandling>
-	  <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-	  <BufferSecurityCheck>false</BufferSecurityCheck>
-	  <ControlFlowGuard>false</ControlFlowGuard>
-	  <FunctionLevelLinking>false</FunctionLevelLinking>
-	  <EnableEnhancedInstructionSet Condition="'$(Platform)'=='Win32'">NoExtensions</EnableEnhancedInstructionSet>
-	  <PreprocessorDefinitions>_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>false</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet Condition="'$(Platform)'=='Win32'">NoExtensions</EnableEnhancedInstructionSet>
+      <PreprocessorDefinitions>_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Platform)'=='Win32'">WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)'=='Debug'">_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-	  <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
       <PreprocessorDefinitions Condition="'$(Configuration)'=='Release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-	  <Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization>
-	  <IntrinsicFunctions Condition="'$(Configuration)'=='Release'">true</IntrinsicFunctions>
+      <Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization>
+      <IntrinsicFunctions Condition="'$(Configuration)'=='Release'">true</IntrinsicFunctions>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
-	  <GenerateDebugInformation>true</GenerateDebugInformation>
-	  <Driver>Driver</Driver>
-	  <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-	  <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-	  <RandomizedBaseAddress>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <Driver>Driver</Driver>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+      <RandomizedBaseAddress>
       </RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-	  <EnableCOMDATFolding Condition="'$(Configuration)'=='Release'">true</EnableCOMDATFolding>
+      <EnableCOMDATFolding Condition="'$(Configuration)'=='Release'">true</EnableCOMDATFolding>
       <OptimizeReferences Condition="'$(Configuration)'=='Release'">true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
