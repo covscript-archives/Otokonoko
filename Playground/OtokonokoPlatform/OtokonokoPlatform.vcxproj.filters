@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="OtokonokoPlatform.cpp" />
+    <ClCompile Include="compiler\codegen.cpp">
+      <Filter>compiler</Filter>
+    </ClCompile>
+    <ClCompile Include="compiler\compiler.cpp">
+      <Filter>compiler</Filter>
+    </ClCompile>
+    <ClCompile Include="compiler\lexer.cpp">
+      <Filter>compiler</Filter>
+    </ClCompile>
+    <ClCompile Include="compiler\parser.cpp">
+      <Filter>compiler</Filter>
+    </ClCompile>
+    <ClCompile Include="instance\extension.cpp">
+      <Filter>instance</Filter>
+    </ClCompile>
+    <ClCompile Include="instance\instance.cpp">
+      <Filter>instance</Filter>
+    </ClCompile>
+    <ClCompile Include="instance\runtime.cpp">
+      <Filter>instance</Filter>
+    </ClCompile>
+    <ClCompile Include="instance\statement.cpp">
+      <Filter>instance</Filter>
+    </ClCompile>
+    <ClCompile Include="covscript.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="compiler">
+      <UniqueIdentifier>{0622d7e8-15d0-490a-aa94-168b2c5aaf2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript">
+      <UniqueIdentifier>{36af8443-2449-403e-90f9-44c82ebdccee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript\core">
+      <UniqueIdentifier>{621111cc-d4e3-438b-b082-398a2d779cea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript\impl">
+      <UniqueIdentifier>{8251b936-2cd3-4743-b307-3f107d09383d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript\import">
+      <UniqueIdentifier>{2e35810f-aa0d-44a0-9045-7081571dc3f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript\import\libdll">
+      <UniqueIdentifier>{0dc45076-221b-41e1-9035-fef97c84b3f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript\import\mozart">
+      <UniqueIdentifier>{562b0fa0-bb1f-40ff-81b7-31bc1e689c88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript\import\parallel_hashmap">
+      <UniqueIdentifier>{b03d8d36-edc8-405c-aeb3-b3582e2be3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript_impl">
+      <UniqueIdentifier>{401af342-213f-411d-a5e2-fdfaf83cec8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript_impl\console">
+      <UniqueIdentifier>{59b072dc-9bd5-49a8-8678-88944c271e2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript_impl\dirent">
+      <UniqueIdentifier>{17a5cccb-eb5d-402e-bda1-32f79992312d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="covscript_impl\mozart">
+      <UniqueIdentifier>{ca3b3425-a228-4842-9426-b25c1adf6fd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="instance">
+      <UniqueIdentifier>{2cd62bad-b72f-49f4-abc5-b99d710f4406}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="covscript\cni.hpp">
+      <Filter>covscript</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\covscript.hpp">
+      <Filter>covscript</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\dll.hpp">
+      <Filter>covscript</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\core\cni.hpp">
+      <Filter>covscript\core</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\core\components.hpp">
+      <Filter>covscript\core</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\core\core.hpp">
+      <Filter>covscript\core</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\core\definition.hpp">
+      <Filter>covscript\core</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\core\variable.hpp">
+      <Filter>covscript\core</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\core\version.hpp">
+      <Filter>covscript\core</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\impl\codegen.hpp">
+      <Filter>covscript\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\impl\compiler.hpp">
+      <Filter>covscript\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\impl\extension.hpp">
+      <Filter>covscript\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\impl\impl.hpp">
+      <Filter>covscript\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\impl\runtime.hpp">
+      <Filter>covscript\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\impl\statement.hpp">
+      <Filter>covscript\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\impl\symbols.hpp">
+      <Filter>covscript\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\libdll\dll.hpp">
+      <Filter>covscript\import\libdll</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\mozart\base.hpp">
+      <Filter>covscript\import\mozart</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\mozart\bind.hpp">
+      <Filter>covscript\import\mozart</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\mozart\function.hpp">
+      <Filter>covscript\import\mozart</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\mozart\traits.hpp">
+      <Filter>covscript\import\mozart</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\mozart\tuple.hpp">
+      <Filter>covscript\import\mozart</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\mozart\typelist.hpp">
+      <Filter>covscript\import\mozart</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\parallel_hashmap\meminfo.h">
+      <Filter>covscript\import\parallel_hashmap</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\parallel_hashmap\phmap.h">
+      <Filter>covscript\import\parallel_hashmap</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\parallel_hashmap\phmap_base.h">
+      <Filter>covscript\import\parallel_hashmap</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\parallel_hashmap\phmap_bits.h">
+      <Filter>covscript\import\parallel_hashmap</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\parallel_hashmap\phmap_config.h">
+      <Filter>covscript\import\parallel_hashmap</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\parallel_hashmap\phmap_fwd_decl.h">
+      <Filter>covscript\import\parallel_hashmap</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript\import\parallel_hashmap\phmap_utils.h">
+      <Filter>covscript\import\parallel_hashmap</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\variant.hpp">
+      <Filter>covscript_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\console\conio.hpp">
+      <Filter>covscript_impl\console</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\console\unix_conio.hpp">
+      <Filter>covscript_impl\console</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\console\win32_conio.hpp">
+      <Filter>covscript_impl\console</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\dirent\dirent.h">
+      <Filter>covscript_impl\dirent</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\dirent\dirent.hpp">
+      <Filter>covscript_impl\dirent</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\mozart\random.hpp">
+      <Filter>covscript_impl\mozart</Filter>
+    </ClInclude>
+    <ClInclude Include="covscript_impl\mozart\timer.hpp">
+      <Filter>covscript_impl\mozart</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
