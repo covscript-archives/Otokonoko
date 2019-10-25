@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Programming Language
 *
@@ -24,17 +24,10 @@
 * cs: Main Namespace
 * cs_impl: Implement Namespace
 */
-// LibDLL
-#include <covscript/import/libdll/dll.hpp>
+
 // Hash Map and Set
-#ifndef CS_COMPATIBILITY_MODE
-
-#include <covscript/import/parallel_hashmap/phmap.h>
-
-#else
 #include <unordered_map>
 #include <unordered_set>
-#endif
 // STL
 #include <forward_list>
 #include <type_traits>
@@ -852,18 +845,8 @@ namespace cs {
 		}
 	};
 
-	namespace dll_resources {
-		constexpr char dll_compatible_check[] = "__CS_ABI_COMPATIBLE__";
-		constexpr char dll_main_entrance[] = "__CS_EXTENSION_MAIN__";
-
-		typedef int(*dll_compatible_check_t)();
-
-		typedef void(*dll_main_entrance_t)(name_space *, process_context *);
-	}
-
 	class extension final : public name_space {
 	public:
-		static garbage_collector<cov::dll> gc;
 
 		extension() = delete;
 
@@ -871,20 +854,7 @@ namespace cs {
 
 		explicit extension(const std::string &path)
 		{
-			using namespace dll_resources;
-			cov::dll *dll = new cov::dll(path);
-			gc.add(dll);
-			dll_compatible_check_t dll_check = reinterpret_cast<dll_compatible_check_t>(dll->get_address(
-			                                       dll_compatible_check));
-			if (dll_check == nullptr || dll_check() != COVSCRIPT_ABI_VERSION)
-				throw runtime_error("Incompatible Covariant Script Extension.(Target: " + std::to_string(dll_check()) +
-				                    ", Current: " + std::to_string(COVSCRIPT_ABI_VERSION) + ")");
-			dll_main_entrance_t dll_main = reinterpret_cast<dll_main_entrance_t>(dll->get_address(dll_main_entrance));
-			if (dll_main != nullptr) {
-				dll_main(this, current_process);
-			}
-			else
-				throw runtime_error("Broken Covariant Script Extension.");
+            throw runtime_error("Not Implemented.");
 		}
 	};
 

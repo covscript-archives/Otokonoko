@@ -187,7 +187,6 @@
     <ClInclude Include="covscript\core\variable.hpp" />
     <ClInclude Include="covscript\core\version.hpp" />
     <ClInclude Include="covscript\covscript.hpp" />
-    <ClInclude Include="covscript\dll.hpp" />
     <ClInclude Include="covscript\impl\codegen.hpp" />
     <ClInclude Include="covscript\impl\compiler.hpp" />
     <ClInclude Include="covscript\impl\extension.hpp" />
@@ -195,27 +194,12 @@
     <ClInclude Include="covscript\impl\runtime.hpp" />
     <ClInclude Include="covscript\impl\statement.hpp" />
     <ClInclude Include="covscript\impl\symbols.hpp" />
-    <ClInclude Include="covscript\import\libdll\dll.hpp" />
     <ClInclude Include="covscript\import\mozart\base.hpp" />
     <ClInclude Include="covscript\import\mozart\bind.hpp" />
     <ClInclude Include="covscript\import\mozart\function.hpp" />
     <ClInclude Include="covscript\import\mozart\traits.hpp" />
     <ClInclude Include="covscript\import\mozart\tuple.hpp" />
     <ClInclude Include="covscript\import\mozart\typelist.hpp" />
-    <ClInclude Include="covscript\import\parallel_hashmap\meminfo.h" />
-    <ClInclude Include="covscript\import\parallel_hashmap\phmap.h" />
-    <ClInclude Include="covscript\import\parallel_hashmap\phmap_base.h" />
-    <ClInclude Include="covscript\import\parallel_hashmap\phmap_bits.h" />
-    <ClInclude Include="covscript\import\parallel_hashmap\phmap_config.h" />
-    <ClInclude Include="covscript\import\parallel_hashmap\phmap_fwd_decl.h" />
-    <ClInclude Include="covscript\import\parallel_hashmap\phmap_utils.h" />
-    <ClInclude Include="covscript_impl\console\conio.hpp" />
-    <ClInclude Include="covscript_impl\console\unix_conio.hpp" />
-    <ClInclude Include="covscript_impl\console\win32_conio.hpp" />
-    <ClInclude Include="covscript_impl\dirent\dirent.h" />
-    <ClInclude Include="covscript_impl\dirent\dirent.hpp" />
-    <ClInclude Include="covscript_impl\mozart\random.hpp" />
-    <ClInclude Include="covscript_impl\mozart\timer.hpp" />
     <ClInclude Include="covscript_impl\variant.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

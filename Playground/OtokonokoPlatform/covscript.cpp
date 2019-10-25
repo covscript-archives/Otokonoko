@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Covariant Script Programming Language
 *
 * Licensed under the Covariant Innovation General Public License,
@@ -81,26 +81,11 @@ namespace cs_impl {
 	cs::namespace_t array_ext = cs::make_shared_namespace<cs::name_space>();
 	cs::namespace_t array_iterator_ext = cs::make_shared_namespace<cs::name_space>();
 	cs::namespace_t char_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t math_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t math_const_ext = cs::make_shared_namespace<cs::name_space>();
 	cs::namespace_t list_ext = cs::make_shared_namespace<cs::name_space>();
 	cs::namespace_t list_iterator_ext = cs::make_shared_namespace<cs::name_space>();
 	cs::namespace_t hash_map_ext = cs::make_shared_namespace<cs::name_space>();
 	cs::namespace_t pair_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t context_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t runtime_ext = cs::make_shared_namespace<cs::name_space>();
 	cs::namespace_t string_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t iostream_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t seekdir_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t openmode_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t istream_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t ostream_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t system_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t console_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t file_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t path_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t path_type_ext = cs::make_shared_namespace<cs::name_space>();
-	cs::namespace_t path_info_ext = cs::make_shared_namespace<cs::name_space>();
 }
 
 namespace cs {
@@ -177,8 +162,6 @@ namespace cs {
 		}
 		return std::stold(str);
 	}
-
-	garbage_collector<cov::dll> extension::gc;
 
 	garbage_collector<token_base> token_base::gc;
 
@@ -421,11 +404,7 @@ namespace cs {
 		.add_buildin_var("move", make_cni(move))
 		.add_buildin_var("swap", make_cni(swap, true))
 		// Add extensions to storage
-		.add_buildin_var("exception", make_namespace(cs_impl::except_ext))
-		.add_buildin_var("iostream", make_namespace(cs_impl::iostream_ext))
-		.add_buildin_var("system", make_namespace(cs_impl::system_ext))
-		.add_buildin_var("runtime", make_namespace(cs_impl::runtime_ext))
-		.add_buildin_var("math", make_namespace(cs_impl::math_ext));
+		.add_buildin_var("exception", make_namespace(cs_impl::except_ext));
 		return context;
 	}
 
@@ -463,11 +442,7 @@ namespace cs {
 		.add_buildin_var("move", make_cni(move))
 		.add_buildin_var("swap", make_cni(swap, true))
 		// Add extensions to storage
-		.add_buildin_var("exception", make_namespace(cs_impl::except_ext))
-		.add_buildin_var("iostream", make_namespace(cs_impl::iostream_ext))
-		.add_buildin_var("system", make_namespace(cs_impl::system_ext))
-		.add_buildin_var("runtime", make_namespace(cs_impl::runtime_ext))
-		.add_buildin_var("math", make_namespace(cs_impl::math_ext));
+		.add_buildin_var("exception", make_namespace(cs_impl::except_ext));
 		return context;
 	}
 
@@ -476,7 +451,6 @@ namespace cs {
 		statement_base::gc.collect();
 		method_base::gc.collect();
 		token_base::gc.collect();
-		extension::gc.collect();
 	}
 
 	void collect_garbage(context_t &context)
