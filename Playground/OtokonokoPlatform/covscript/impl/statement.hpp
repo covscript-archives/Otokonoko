@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Statement
 *
@@ -19,7 +19,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/impl/impl.hpp>
+#include "covscript/impl/impl.hpp"
 
 namespace cs {
 	class statement_expression final : public statement_base {

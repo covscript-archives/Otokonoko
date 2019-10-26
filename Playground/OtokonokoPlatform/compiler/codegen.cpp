@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Covariant Script Code Generating
 *
 * Licensed under the Covariant Innovation General Public License,
@@ -26,32 +26,6 @@ namespace cs {
 	{
 		return new statement_expression(static_cast<token_expr *>(raw.front().front())->get_tree(), context,
 		                                raw.front().back());
-	}
-
-	void method_import::preprocess(const context_t &context, const std::deque<std::deque<token_base *>> &raw)
-	{
-		tree_type<token_base *> &tree = static_cast<token_expr *>(raw.front().at(1))->get_tree();
-		if (tree.root().data() == nullptr)
-			throw internal_error("Null pointer accessed.");
-		std::vector<std::pair<std::string, var>> var_list;
-		auto process = [&context, &var_list](tree_type<token_base *> &t) {
-			token_base *token = t.root().data();
-			if (token == nullptr || token->get_type() != token_types::id)
-				throw runtime_error("Wrong grammar for import statement.");
-			const var_id &package_name = static_cast<token_id *>(token)->get_id();
-			const var &ext = make_namespace(context->instance->import(current_process->import_path, package_name));
-			context->compiler->add_constant(ext);
-			context->instance->storage.add_var(package_name, ext);
-			var_list.emplace_back(package_name, ext);
-		};
-		if (tree.root().data()->get_type() == token_types::parallel) {
-			auto &parallel_list = static_cast<token_parallel *>(tree.root().data())->get_parallel();
-			for (auto &t:parallel_list)
-				process(t);
-		}
-		else
-			process(tree);
-		mResult = new statement_import(var_list, context, raw.front().back());
 	}
 
 	statement_base *

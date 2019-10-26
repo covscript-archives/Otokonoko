@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script C/C++ Native Interface Extension
 *
@@ -19,7 +19,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/core/core.hpp>
+#include "covscript/core/core.hpp"
 
 // Define this macro to disable all standard type conversion
 #ifndef CNI_DISABLE_STD_CONVERSION

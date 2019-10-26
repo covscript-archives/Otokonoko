@@ -27,6 +27,7 @@
       <Filter>instance</Filter>
     </ClCompile>
     <ClCompile Include="covscript.cpp" />
+    <ClCompile Include="OtokonokoPlatformRuntime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="compiler">
@@ -121,5 +122,6 @@
     <ClInclude Include="covscript_impl\variant.hpp">
       <Filter>covscript_impl</Filter>
     </ClInclude>
+    <ClInclude Include="OtokonokoPlatformRuntime.h" />
   </ItemGroup>
 </Project>

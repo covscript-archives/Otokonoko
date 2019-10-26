@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Compiler
 *
@@ -19,7 +19,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/impl/symbols.hpp>
+#include "covscript/impl/symbols.hpp"
 
 namespace cs {
 	class translator_type final {

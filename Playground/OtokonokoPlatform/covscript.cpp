@@ -19,55 +19,8 @@
 * Github: https://github.com/mikecovlee
 * Website: http://covscript.org
 */
-#include <covscript/impl/codegen.hpp>
-#include <covscript/covscript.hpp>
-
-#ifdef COVSCRIPT_PLATFORM_WIN32
-
-#include <shlobj.h>
-
-#pragma comment(lib, "shell32.lib")
-#endif
-
-#ifdef _MSC_VER
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0501
-#endif
-#include <windows.h>
-#include <Dbghelp.h>
-#pragma comment(lib, "DbgHelp")
-namespace cs_impl {
-	std::string cxx_demangle(const char* name)
-	{
-		char buffer[1024];
-		DWORD length = UnDecorateSymbolName(name, buffer, sizeof(buffer), 0);
-		if (length > 0)
-			return std::string(buffer, length);
-		else
-			return name;
-	}
-}
-#elif defined __GNUC__
-
-#include <cxxabi.h>
-
-namespace cs_impl {
-	std::string cxx_demangle(const char *name)
-	{
-		char buffer[1024] = {0};
-		size_t size = sizeof(buffer);
-		int status;
-		char *ret = abi::__cxa_demangle(name, buffer, &size, &status);
-		if (ret != nullptr)
-			return std::string(ret);
-		else
-			return name;
-	}
-}
-#endif
+#include "covscript/impl/codegen.hpp"
+#include "covscript/covscript.hpp"
 
 std::ostream &operator<<(std::ostream &out, const cs_impl::any &val)
 {
@@ -168,55 +121,6 @@ namespace cs {
 	garbage_collector<statement_base> statement_base::gc;
 
 	garbage_collector<method_base> method_base::gc;
-
-#ifdef COVSCRIPT_PLATFORM_WIN32
-
-	std::string get_sdk_path()
-	{
-#ifdef COVSCRIPT_HOME
-		return COVSCRIPT_HOME;
-#else
-		CHAR path[MAX_PATH];
-		SHGetFolderPathA(nullptr, CSIDL_PERSONAL, nullptr, SHGFP_TYPE_CURRENT, path);
-		return std::strcat(path, "\\CovScript");
-#endif
-	}
-
-#else
-
-	std::string get_sdk_path()
-	{
-#ifdef COVSCRIPT_HOME
-		return COVSCRIPT_HOME;
-#else
-		return "/usr/share/covscript";
-#endif
-	}
-
-#endif
-
-	std::string process_path(const std::string &raw)
-	{
-		auto pos0 = raw.find('\"');
-		auto pos1 = raw.rfind('\"');
-		if (pos0 != std::string::npos) {
-			if (pos0 == pos1)
-				throw cs::fatal_error("argument syntax error.");
-			else
-				return raw.substr(pos0 + 1, pos1 - pos0 - 1);
-		}
-		else
-			return raw;
-	}
-
-	std::string get_import_path()
-	{
-		const char *import_path = std::getenv("CS_IMPORT_PATH");
-		if (import_path != nullptr)
-			return process_path(import_path);
-		else
-			return process_path(get_sdk_path() + cs::path_separator + "imports");
-	}
 
 	array parse_cmd_args(int argc, const char *argv[])
 	{

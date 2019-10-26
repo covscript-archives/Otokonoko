@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script C/C++ Native Interface
 *
@@ -19,7 +19,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/import/mozart/bind.hpp>
+#include "covscript/import/mozart/bind.hpp"
 
 namespace cs_impl {
 // Utilities
@@ -109,7 +109,7 @@ namespace cs_impl {
 		{
 			if (typeid(T) != val.type())
 				throw cs::runtime_error("Invalid Argument. At " + std::to_string(index + 1) + ". Expected " +
-				                        cxx_demangle(get_name_of_type<T>()) + ", provided " + val.get_type_name());
+				                        std::string(get_name_of_type<T>()) + ", provided " + val.get_type_name());
 			else
 				return 0;
 		}
@@ -166,7 +166,7 @@ namespace cs_impl {
 				return convert_helper<_TargetT>::get_val(val);
 			else
 				throw cs::runtime_error("Invalid Argument. At " + std::to_string(index + 1) + ". Expected " +
-				                        cxx_demangle(get_name_of_type<_TargetT>()) + ", provided " +
+				                        std::string(get_name_of_type<_TargetT>()) + ", provided " +
 				                        val.get_type_name());
 		}
 	};

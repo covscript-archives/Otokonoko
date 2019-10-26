@@ -36,11 +36,7 @@
 #include <algorithm>
 #include <exception>
 #include <stdexcept>
-#include <fstream>
 #include <sstream>
-#include <iomanip>
-#include <istream>
-#include <ostream>
 #include <utility>
 #include <cctype>
 #include <string>
@@ -51,10 +47,10 @@
 #include <list>
 #include <map>
 // CovScript Headers
-#include <covscript/core/components.hpp>
-#include <covscript/core/definition.hpp>
-#include <covscript/core/variable.hpp>
-#include <covscript/core/version.hpp>
+#include "covscript/core/components.hpp"
+#include "covscript/core/definition.hpp"
+#include "covscript/core/variable.hpp"
+#include "covscript/core/version.hpp"
 
 namespace cs {
 // Process Context
@@ -842,19 +838,6 @@ namespace cs {
 		void remove(void *ptr)
 		{
 			table.erase(static_cast<T *>(ptr));
-		}
-	};
-
-	class extension final : public name_space {
-	public:
-
-		extension() = delete;
-
-		extension(const extension &) = delete;
-
-		explicit extension(const std::string &path)
-		{
-            throw runtime_error("Not Implemented.");
 		}
 	};
 

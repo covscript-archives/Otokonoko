@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Covariant Script Statement
 *
 * Licensed under the Covariant Innovation General Public License,
@@ -18,8 +18,9 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/impl/statement.hpp>
-#include <iostream>
+#include "covscript/impl/statement.hpp"
+
+#include "OtokonokoPlatformRuntime.h"
 
 namespace cs {
 	var function::call(vector &args) const
@@ -113,7 +114,7 @@ namespace cs {
 	{
 		const var &result = context->instance->parse_expr(mTree.root());
 		try {
-			std::cout << result.to_string() << std::endl;
+            WriteLine(result.to_string().c_str());
 		}
 		catch (cov::error &e) {
 			if (!std::strcmp(e.what(), "E000D"))
@@ -370,7 +371,7 @@ namespace cs {
 			catch (cov::error &e) {
 				if (!std::strcmp(e.what(), "E000D"))
 					throw e;
-				o << "[" << cs_impl::cxx_demangle(it.first.type().name()) << "]";
+				o << "[" << it.first.type().name() << "]";
 			}
 			o << "\" >\n";
 			for (auto &ptr:it.second->get_block())

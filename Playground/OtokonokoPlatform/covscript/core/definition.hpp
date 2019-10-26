@@ -20,10 +20,6 @@
 * Github: https://github.com/mikecovlee
 */
 
-#if defined(_WIN32) || defined(WIN32)
-#define COVSCRIPT_PLATFORM_WIN32
-#endif
-
 // Types
 
 namespace cs_impl {
@@ -73,15 +69,6 @@ namespace cs {
 	typedef void(*cs_exception_handler)(const lang_error &);
 
 	typedef void(*std_exception_handler)(const std::exception &);
-
-// Path seperator and delimiter
-#ifdef COVSCRIPT_PLATFORM_WIN32
-	constexpr char path_separator = '\\';
-	constexpr char path_delimiter = ';';
-#else
-	constexpr char path_separator = '/';
-	constexpr char path_delimiter = ':';
-#endif
 }
 
 // Debugger Hooks

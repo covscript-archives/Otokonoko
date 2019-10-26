@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Implementation
 *
@@ -19,8 +19,8 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/impl/compiler.hpp>
-#include <covscript/impl/runtime.hpp>
+#include "covscript/impl/compiler.hpp"
+#include "covscript/impl/runtime.hpp"
 
 namespace cs {
 	class instance_type final : public runtime_type {
@@ -47,13 +47,6 @@ namespace cs {
 		instance_type(const instance_type &) = delete;
 
 		~instance_type() = default;
-
-		// Wrapped Method
-		namespace_t import(const std::string &, const std::string &);
-
-		namespace_t source_import(const std::string &);
-
-		void compile(const std::string &);
 
 		void interpret();
 

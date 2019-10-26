@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Covariant Script Runtime
 *
 * Licensed under the Covariant Innovation General Public License,
@@ -18,7 +18,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/impl/runtime.hpp>
+#include "covscript/impl/runtime.hpp"
 
 namespace cs {
 	var runtime_type::parse_add(const var &a, const var &b)

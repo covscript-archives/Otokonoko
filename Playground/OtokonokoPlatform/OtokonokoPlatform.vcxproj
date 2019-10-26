@@ -177,6 +177,7 @@
     <ClCompile Include="instance\runtime.cpp" />
     <ClCompile Include="instance\statement.cpp" />
     <ClCompile Include="OtokonokoPlatform.cpp" />
+    <ClCompile Include="OtokonokoPlatformRuntime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="covscript\cni.hpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="covscript\import\mozart\tuple.hpp" />
     <ClInclude Include="covscript\import\mozart\typelist.hpp" />
     <ClInclude Include="covscript_impl\variant.hpp" />
+    <ClInclude Include="OtokonokoPlatformRuntime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

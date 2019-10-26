@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Basic Components
 *
@@ -19,7 +19,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/import/mozart/base.hpp>
+#include "covscript/import/mozart/base.hpp"
 
 namespace cs {
 // Exceptions

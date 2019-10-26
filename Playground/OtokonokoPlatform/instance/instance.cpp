@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Covariant Script Instance
 *
 * Licensed under the Covariant Innovation General Public License,
@@ -18,25 +18,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/covscript.hpp>
-#include <fcntl.h>
-#include <cstdio>
-
-#if defined(_WIN32) || defined(WIN32)
-
-#include <io.h>
-
-#else
-
-#include <unistd.h>
-
-#endif
-
-#if defined(__APPLE__) || defined(__MACH__)
-
-#include <mach-o/loader.h>
-
-#endif
+#include "covscript/covscript.hpp"
 
 namespace cs {
 	const std::string &statement_base::get_file_path() const noexcept
@@ -52,116 +34,6 @@ namespace cs {
 	const std::string &statement_base::get_raw_code() const noexcept
 	{
 		return context->file_buff.at(line_num - 1);
-	}
-
-	namespace_t instance_type::source_import(const std::string &path)
-	{
-		int fd = _open(path.c_str(), O_RDONLY);
-		if (fd < 0) {
-			throw fatal_error("Failed to open file.");
-		}
-
-#if defined(_WIN32) || defined(WIN32)
-		char header[2] = {0};
-#elif defined(__APPLE__) || defined(__MACH__)
-		uint32_t header;
-#elif defined(linux) || defined(__linux) || defined(__linux__)
-		char header[4] = {0};
-#endif
-		int nread = _read(fd, reinterpret_cast<void *>(&header), sizeof(header));
-		_close(fd);
-
-		if (nread < 0) {
-			throw fatal_error("Failed to read file header.");
-		}
-
-#if defined(_WIN32) || defined(WIN32)
-		if (header[0] == 'M' && header[1] == 'Z') {
-#elif defined(__APPLE__) || defined(__MACH__)
-		if (header == MH_MAGIC || header == MH_CIGAM
-		        || header == MH_MAGIC_64 || header == MH_CIGAM_64) {
-#elif defined(linux) || defined(__linux) || defined(__linux__)
-		if (header[0] == 0x7f
-		        && header[1] == 'E'
-		        && header[2] == 'L'
-		        && header[3] == 'F') {
-#endif
-			// is extension file
-			return std::make_shared<extension>(path);
-
-		}
-		else {
-			// is package file
-			context_t rt = create_subcontext(context);
-			rt->compiler->swap_context(rt);
-			try {
-				rt->instance->compile(path);
-			}
-			catch (...) {
-				context->compiler->swap_context(context);
-				throw;
-			}
-			context->compiler->swap_context(context);
-			rt->instance->interpret();
-			return std::make_shared<name_space>(rt->instance->storage.get_global());
-		}
-	}
-
-	namespace_t instance_type::import(const std::string &path, const std::string &name) {
-		std::vector<std::string> collection;
-		{
-			std::string tmp;
-			for (auto &ch:path) {
-				if (ch == cs::path_delimiter) {
-					collection.push_back(tmp);
-					tmp.clear();
-				}
-				else
-					tmp.push_back(ch);
-			}
-			collection.push_back(tmp);
-		}
-		for (auto &it:collection) {
-			std::string package_path = it + path_separator + name;
-			if (std::ifstream(package_path + ".csp")) {
-				context_t rt = create_subcontext(context);
-				rt->compiler->swap_context(rt);
-				try {
-					rt->instance->compile(package_path + ".csp");
-				}
-				catch (...) {
-					context->compiler->swap_context(context);
-					throw;
-				}
-				context->compiler->swap_context(context);
-				rt->instance->interpret();
-				if (rt->package_name.empty())
-					throw runtime_error("Target file is not a package.");
-				if (rt->package_name != name)
-					throw runtime_error("Package name is different from file name.");
-				return std::make_shared<name_space>(rt->instance->storage.get_global());
-			}
-			else if (std::ifstream(package_path + ".cse"))
-				return std::make_shared<extension>(package_path + ".cse");
-		}
-		throw fatal_error("No such file or directory.");
-	}
-
-	void instance_type::compile(const std::string &path) {
-		context->file_path = path;
-		// Read from file
-		std::deque<char> buff;
-		std::ifstream in(path);
-		if (!in.is_open())
-			throw fatal_error(path + ": No such file or directory");
-		for (int ch = in.get(); ch != std::char_traits<char>::eof(); ch = in.get())
-			buff.push_back(ch);
-		std::deque<std::deque<token_base *>> ast;
-		// Compile
-		context->compiler->clear_metadata();
-		context->compiler->build_ast(buff, ast);
-		context->compiler->code_gen(ast, statements);
-		context->compiler->utilize_metadata();
 	}
 
 	void instance_type::interpret() {
@@ -189,11 +61,7 @@ namespace cs {
 		       << " >\n< Import Path: \""
 		       << current_process->import_path
 		       << "\" >\n";
-#ifdef COVSCRIPT_PLATFORM_WIN32
-		stream << "< Platform: Win32 >\n";
-#else
-		stream << "< Platform: Unix >\n";
-#endif
+        stream << "< Platform: Otokonoko no Sekai >\n";
 		stream << "< EndMetaData >\n";
 		for (auto &ptr:statements)
 			ptr->dump(stream);

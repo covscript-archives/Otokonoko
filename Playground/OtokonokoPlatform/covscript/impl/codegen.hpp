@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Code Generating
 *
@@ -19,8 +19,8 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/impl/symbols.hpp>
-#include <covscript/impl/statement.hpp>
+#include "covscript/impl/symbols.hpp"
+#include "covscript/impl/statement.hpp"
 
 namespace cs {
 	class method_expression final : public method_base {
@@ -54,8 +54,6 @@ namespace cs {
 		{
 			return statement_types::import_;
 		}
-
-		void preprocess(const context_t &, const std::deque<std::deque<token_base *>> &) override;
 
 		statement_base *translate(const context_t &, const std::deque<std::deque<token_base *>> &) override;
 	};

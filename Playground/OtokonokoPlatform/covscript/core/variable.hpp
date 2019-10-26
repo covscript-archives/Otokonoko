@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Variable
 *
@@ -19,11 +19,9 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/import/mozart/traits.hpp>
+#include "covscript/import/mozart/traits.hpp"
 
 namespace cs_impl {
-// Name Demangle
-	std::string cxx_demangle(const char *);
 
 // Type support auto-detection(SFINAE)
 // Compare
@@ -577,9 +575,9 @@ namespace cs_impl {
 		std::string get_type_name() const
 		{
 			if (this->mDat == nullptr)
-				return cxx_demangle(get_name_of_type<void>());
+				return get_name_of_type<void>();
 			else
-				return cxx_demangle(this->mDat->data->get_type_name());
+				return this->mDat->data->get_type_name();
 		}
 
 		bool is_same(const any &obj) const

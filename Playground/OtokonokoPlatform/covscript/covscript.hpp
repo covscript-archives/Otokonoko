@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Programming Language
 *
@@ -87,11 +87,6 @@ namespace cs_function_invoker_impl {
 }
 
 namespace cs {
-	std::string get_sdk_path();
-
-	std::string process_path(const std::string &);
-
-	std::string get_import_path();
 
 	array parse_cmd_args(int, const char *[]);
 

@@ -1,14 +1,8 @@
-﻿#include <iostream>
+﻿#include <covscript/covscript.hpp>
 
-//int main()
-//{
-//    std::cout << "Hello World!\n";
-//
-//	return 0;
-//}
+#include "OtokonokoPlatformRuntime.h"
 
-
-#include <covscript/covscript.hpp>
+#include <iostream>
 
 //// 两种方式，一种是自己做转发，另外一种就是声明转发规则
 //// 不过这个函数因为有一些没用的参数，就必须转发了，这里仅示范自动转发规则的编写
@@ -119,7 +113,7 @@ int main()
             {
                 if (std::strstr(e.what(), "CS_REPL_EXIT") == nullptr)
                 {
-                    std::cerr << e.what() << std::endl;
+                    WriteLine(e.what());
                 }
                 else
                     break;
@@ -135,12 +129,12 @@ int main()
     }
     catch (const std::exception & e)
     {
-        std::cerr << e.what() << std::endl;
+        WriteLine(e.what());
         errorcode = -1;
     }
     catch (...)
     {
-        std::cerr << "Uncaught exception: Unknown exception" << std::endl;
+        WriteLine("Uncaught exception: Unknown exception");
         errorcode = -1;
     }
 

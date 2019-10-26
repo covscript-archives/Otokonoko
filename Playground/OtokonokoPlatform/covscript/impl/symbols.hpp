@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 /*
 * Covariant Script Symbols
 *
@@ -19,7 +19,7 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/impl/extension.hpp>
+#include "covscript/impl/extension.hpp"
 
 namespace cs {
 	enum class token_types {
@@ -348,7 +348,7 @@ namespace cs {
 			catch (cov::error &e) {
 				if (!std::strcmp(e.what(), "E000D"))
 					throw e;
-				o << "[" << cs_impl::cxx_demangle(mVal.type().name()) << "]";
+				o << "[" << mVal.type().name() << "]";
 			}
 			o << "\" >";
 			return true;

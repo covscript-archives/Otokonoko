@@ -19,8 +19,8 @@
 * Email: mikecovlee@163.com
 * Github: https://github.com/mikecovlee
 */
-#include <covscript/core/core.hpp>
-#include <covscript/core/cni.hpp>
+#include "covscript/core/core.hpp"
+#include "covscript/core/cni.hpp"
 
 // Basic Type Support
 
@@ -58,11 +58,9 @@ namespace cs_impl {
 	template<>
 	std::string to_string<cs::number>(const cs::number &val)
 	{
-		std::stringstream ss;
-		std::string str;
-		ss << std::setprecision(cs::current_process->output_precision) << val;
-		ss >> str;
-		return std::move(str);
+        std::string output(50, '\0');
+        snprintf(&output[0], 50, "%Lf", val);
+        return std::move(output);
 	}
 
 	template<>
@@ -75,9 +73,9 @@ namespace cs_impl {
 	std::string to_string<cs::type_id>(const cs::type_id &id)
 	{
 		if (id.type_hash != 0)
-			return cxx_demangle(id.type_idx.name()) + "_" + to_string(id.type_hash);
+			return std::string(id.type_idx.name()) + "_" + to_string(id.type_hash);
 		else
-			return cxx_demangle(id.type_idx.name());
+			return id.type_idx.name();
 	}
 
 	template<>

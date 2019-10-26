@@ -19,8 +19,7 @@
 * Github: https://github.com/mikecovlee
 */
 
-#include <covscript/impl/impl.hpp>
-#include <iostream>
+#include "covscript/impl/impl.hpp"
 
 namespace cs_impl {
 	namespace array_cs_ext {
