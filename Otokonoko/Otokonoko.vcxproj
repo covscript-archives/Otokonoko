@@ -90,7 +90,8 @@
       <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
       <PreprocessorDefinitions Condition="'$(Configuration)'=='Release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization>
-      <IntrinsicFunctions Condition="'$(Configuration)'=='Release'">true</IntrinsicFunctions>
+      <AdditionalOptions>/Oi- %(AdditionalOptions)</AdditionalOptions>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <Link>
       <SubSystem>EFI Application</SubSystem>
@@ -104,10 +105,16 @@
       </DataExecutionPrevention>
       <EnableCOMDATFolding Condition="'$(Configuration)'=='Release'">true</EnableCOMDATFolding>
       <OptimizeReferences Condition="'$(Configuration)'=='Release'">true</OptimizeReferences>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Otokonoko.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="op_stdbool.h" />
+    <ClInclude Include="op_stddef.h" />
+    <ClInclude Include="op_stdint.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,19 +8,19 @@
  * DEVELOPER: Mouri_Naruto (Mouri_Naruto AT Outlook.com)
  */
 
-#ifdef _In_
+#ifndef _In_
 #define _In_
 #endif 
 
-#ifdef _In_opt_
+#ifndef _In_opt_
 #define _In_opt_
 #endif 
 
-#ifdef _Out_
+#ifndef _Out_
 #define _Out_
 #endif 
 
-#ifdef _Out_opt_
+#ifndef _Out_opt_
 #define _Out_opt_
 #endif 
 
@@ -37,11 +37,7 @@ extern "C" {
 }
 #endif
 
-#ifdef __cplusplus
-#include <cstdint>
-#else
-#include <stdint.h>
-#endif
+#include "op_stdint.h"
 
 /*
  * Otokonoko Platform (OP) Status
@@ -78,6 +74,29 @@ EFI_STATUS UefiOutputString(
 }
 
 /**
+ * Copies the value ch (after conversion to unsigned char as if by
+ * (unsigned char)ch) into each of the first count characters of the object
+ * pointed to by dest. The behavior is undefined if access occurs beyond the
+ * end of the dest array. The behavior is undefined if dest is a null pointer.
+ *
+ * @param dest The pointer to the object to fill.
+ * @param ch The fill byte.
+ * @param count The number of bytes to fill.
+ * @return A copy of dest.
+ */
+extern "C" void* memset(void* dest, int ch, size_t count)
+{
+    // The "volatile" is used to prevent the compiler from trying to implement
+    // these C functions as inline functions.
+    volatile unsigned char* d = reinterpret_cast<unsigned char*>(dest);
+
+    while (count--)
+        *d++ = static_cast<unsigned char>(ch);
+
+    return dest;
+}
+
+/**
  * Entry point to UEFI Application.
  *
  * @param ImageHandle The image handle of the UEFI Application.
@@ -111,7 +130,8 @@ EFI_STATUS EFIAPI UefiMain(
 
         for (size_t i = 0; i < FrameBufferSize; ++i)
         {
-            FrameBufferBase[i] = 0xFF000000;
+            // A R G B (BGRA)
+            FrameBufferBase[i] = 0x00007ACC;
         }
 
     }

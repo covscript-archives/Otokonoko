@@ -3,4 +3,9 @@
   <ItemGroup>
     <ClCompile Include="Otokonoko.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="op_stdint.h" />
+    <ClInclude Include="op_stdbool.h" />
+    <ClInclude Include="op_stddef.h" />
+  </ItemGroup>
 </Project>
